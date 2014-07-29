@@ -9,7 +9,6 @@ html {
   overflow-y: scroll;
 }
 body {
-  
   padding-top: 60px;
 }
 section {
@@ -32,24 +31,8 @@ textarea {
 h1, h2, h3, h4, h5, h6 {
 line-height: 1;
 }
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: $gray-light;
-}
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-}
+
+
 /* header */
 #logo {
   float: left;
@@ -70,7 +53,8 @@ p {
 
 /* footer */
 footer {
-  margin-top: 45px;
+  margin-top: 60px;
+  margin-bottom: 60px;
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
   color: $gray-light;
@@ -134,4 +118,21 @@ aside {
   margin-right: 10px;
 }
 
+.marketing .col-lg-4 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: normal;
+}
+.marketing .col-lg-4 p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
 
+
+.carousel {
+  position: relative;
+  margin-bottom: 60px;
+  margin-top: 10px;
+} 
