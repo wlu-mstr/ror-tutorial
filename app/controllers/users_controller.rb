@@ -1,10 +1,39 @@
 class UsersController < ApplicationController
+  before_action :signed_in_user, only: [:index,:edit, :update]
+  before_action :correct_user,   only: [:edit, :update]
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
   def new
     @user = User.new
   end
 
+  def edit
+    # not necessary anymore, because `before_action :correct_user` have
+    # get @user
+    # @user = User.find(params[:id])
+  end
+
+  def update
+    # ditto
+    # @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash.now[:success] = "Profile updated"
+      sign_in @user
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
   def show
     @user = User.find(params[:id])
+  end
+
+  # for user who logged in to see all users
+  def index
+    @users = User.paginate(page: params[:page])
   end
 
   def create
@@ -22,5 +51,24 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password,
     :password_confirmation)
+  end
+
+  # only user signed in can ...
+  def signed_in_user
+    unless signed_in?
+      flash.now[:danger] = "Please sign in first."
+      # store the edit location for redirect back
+      store_location
+      redirect_to signin_url
+    end
+  end
+
+  # only user him/herslf can ...
+  def correct_user
+    @user = User.find(params[:id])
+    unless current_user?(@user)
+      flash.now[:danger] = "You can only change your own profile."
+      redirect_to signin_url
+    end
   end
 end

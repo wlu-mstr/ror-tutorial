@@ -44,3 +44,8 @@ gem 'sprockets'
 gem 'bcrypt'
 
 gem 'bootstrap_form'
+# to fake users
+gem 'faker'
+# paginate
+gem 'bootstrap-will_paginate'
+
