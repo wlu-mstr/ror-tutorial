@@ -1,7 +1,5 @@
-<% provide(:title, 'Sign up') %> <h1>Sign up</h1>
-<div class="container">
-	<div class="span6 offset3">
-
+<div class="container-narrow">
+		<% provide(:title, 'Sign up') %> <h1>Sign up</h1>
 		<%= bootstrap_form_for(@user) do |f| %>
 		<%= f.alert_message "Please fix the errors below." %>
 		<%= f.error_summary %>
@@ -12,5 +10,4 @@
 		<%= f.submit "create new user", class: "btn btn-large btn-primary"%>
 		<% end %>
 
-	</div>
 </div>

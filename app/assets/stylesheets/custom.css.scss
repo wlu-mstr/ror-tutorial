@@ -91,28 +91,6 @@ footer {
   @include box_sizing;
 }
 
-aside {
-   section {
-    padding: 10px 0;
-    border-top: 1px solid $gray-lighter;
-    &:first-child {
-    border: 0;
-    padding-top: 0;
-  }
-    span {
-      display: block;
-      margin-bottom: 3px;
-      line-height: 1;
-    }
-    h1 {
-      font-size: 1.4em;
-      text-align: left;
-      letter-spacing: -1px;
-      margin-bottom: 3px;
-      margin-top: 0px;
-    }
-  }
-}
 .gravatar {
   float: left;
   margin-right: 10px;
@@ -136,3 +114,17 @@ aside {
   margin-bottom: 60px;
   margin-top: 10px;
 } 
+
+.container-narrow {
+  margin: 0 auto;
+  max-width: 700px;
+  display: block; 
+}
+  .container-narrow:before {
+    display: table;
+    line-height: 0;
+    content: ""; }
+  .container-narrow:after {
+    display: table;
+    line-height: 0;
+    content: ""; }
