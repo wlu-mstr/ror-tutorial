@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/yrgoldteeth/bootstrap-will_paginate
+  revision: 702b4b1f9c179d236d2698289a6bd1673e37c014
+  specs:
+    bootstrap-will_paginate (0.0.10)
+      will_paginate
+
 GEM
   remote: http://ruby.taobao.org/
   specs:
@@ -32,8 +39,6 @@ GEM
     bcrypt (3.1.7-x64-mingw32)
     bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
-    bootstrap-will_paginate (0.0.10)
-      will_paginate
     bootstrap_form (2.1.1)
     builder (3.2.2)
     coffee-rails (4.0.1)
@@ -129,7 +134,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-sass
-  bootstrap-will_paginate
+  bootstrap-will_paginate!
   bootstrap_form
   coffee-rails (~> 4.0.0)
   faker
