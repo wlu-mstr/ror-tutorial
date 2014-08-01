@@ -48,7 +48,3 @@ gem 'bootstrap_form'
 gem 'faker'
 # paginate
 gem 'bootstrap-will_paginate', :git => 'https://github.com/yrgoldteeth/bootstrap-will_paginate'
-<<<<<<< HEAD
-
-=======
->>>>>>> 3863d3b7fe3913203e8238d8b2c9e9263d3e46a1
