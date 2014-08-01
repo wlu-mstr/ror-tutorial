@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :signed_in_user, only: [:index,:edit, :update]
   before_action :correct_user,   only: [:edit, :update]
+  before_action :admin_user,     only: :destroy
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
@@ -29,6 +30,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   # for user who logged in to see all users
@@ -46,6 +48,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User destroyed."
+    redirect_to users_url
+  end
   private
 
   def user_params
@@ -71,4 +78,10 @@ class UsersController < ApplicationController
       redirect_to signin_url
     end
   end
+
+  # check whether the user is admin 
+  def admin_user
+    redirect_to(root_path) unless current_user.admin?
+  end
+
 end
