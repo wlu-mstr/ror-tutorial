@@ -1,5 +1,5 @@
 class JobPositionsController < ApplicationController
-  before_action :is_recruiter?, only: [:create, :destroy]
+  before_action :is_recruiter?, only: [:new, :create, :destroy]
 
   def job_params
     params.require(:job_position).permit(:title, :dept, :opennum, :description, :requirement)
@@ -11,13 +11,21 @@ class JobPositionsController < ApplicationController
   def create
     @job = JobPosition.new(job_params)
     if @job.save
-      flash.now[:success] = "A new job is created."
+      flash[:success] = "A new job is created."
       redirect_to @job
     end
   end
 
   def new
-    @job = JobPosition.new
+    if is_recruiter?
+      @job = JobPosition.new
+    else
+      if signed_in?
+        redirect_to current_user
+      else
+        redirect_to signin_url
+      end
+    end
   end
   
   def destroy
