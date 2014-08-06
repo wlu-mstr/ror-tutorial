@@ -24,6 +24,10 @@ module SessionsHelper
   def signed_in?
     !current_user.nil?
   end
+  
+  def is_recruiter?
+    signed_in? && current_user.recruiter?
+  end
 
   def store_location
     session[:return_to] = request.fullpath

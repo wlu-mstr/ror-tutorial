@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731133442) do
+ActiveRecord::Schema.define(version: 20140806113535) do
+
+  create_table "job_positions", force: true do |t|
+    t.string   "title"
+    t.string   "dept"
+    t.integer  "opennum"
+    t.text     "description"
+    t.text     "requirement"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "job_positions", ["user_id", "created_at"], name: "index_job_positions_on_user_id_and_created_at"
 
   create_table "microposts", force: true do |t|
     t.string   "content"
@@ -30,6 +43,7 @@ ActiveRecord::Schema.define(version: 20140731133442) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           default: false
+    t.boolean  "recruiter",       default: false
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
