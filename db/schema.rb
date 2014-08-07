@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806113535) do
+ActiveRecord::Schema.define(version: 20140807105229) do
 
   create_table "job_positions", force: true do |t|
     t.string   "title"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20140806113535) do
   end
 
   add_index "job_positions", ["user_id", "created_at"], name: "index_job_positions_on_user_id_and_created_at"
+
+  create_table "jobapps", force: true do |t|
+    t.string   "title"
+    t.string   "dept"
+    t.integer  "num"
+    t.text     "description"
+    t.text     "requirement"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "microposts", force: true do |t|
     t.string   "content"

@@ -1,0 +1,43 @@
+<h1>Listing All Jobs</h1>
+
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Dept</th>
+			<th>Number</th>
+			<th>Date</th>
+			<th colspan="3">Action</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @jobapps.each do |jobapp| %>
+		<tr>
+			<td><%= link_to jobapp.title, jobapp %></td>
+			<td><%= jobapp.dept %></td>
+			<td><%= jobapp.num %></td>
+			<td><%= jobapp.created_at %></td>
+			<td>
+					<%= link_to 'Show', jobapp %>
+					<% if can? :update, jobapp %>
+						<%= link_to 'Edit', edit_jobapp_path(jobapp) %>
+					<% end %>
+					<% if can? :destroy, jobapp %>
+						<%= link_to 'Destroy', jobapp, method: :delete, data: { confirm: 'Are you sure?' } %>
+					<% end %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<br>
+
+<% if can? :new, Jobapp%>
+	<ul class="pager">
+		<li>
+			<%= link_to 'New Job', new_jobapp_path %>
+		</li>
+	</ul>
+<% end %>
