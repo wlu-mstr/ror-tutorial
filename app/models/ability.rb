@@ -1,13 +1,14 @@
 class Ability
   include CanCan::Ability
-  include SessionsHelper
 
   def initialize(user)
     user ||= User.new
-    if user.recruiter? || user.admin?
+    
+    if user.recruiter?
       can :manage, :all
     else
       can :read, Jobapp
+      can :create, User
       can :manage, User do |user1|
         user1 == user
       end

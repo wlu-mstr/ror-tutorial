@@ -1,8 +1,6 @@
 class JobappsController < ApplicationController
-  load_and_authorize_resource
-  before_action :set_jobapp, only: [:show, :edit, :update, :destroy]
-  
-
+  load_and_authorize_resource except: [:create]
+ 
   # GET /jobapps
   # GET /jobapps.json
   def index

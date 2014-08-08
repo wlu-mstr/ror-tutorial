@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource
-  before_action :signed_in_user, only: [:index,:edit, :update]
+  load_and_authorize_resource except: [:create]
+  before_action :signed_in_user, only: [:edit, :update]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
   def user_params
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash.now[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      redirect_to jobapps_path
     else
       render 'new'
     end
