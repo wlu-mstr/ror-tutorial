@@ -7,6 +7,13 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
+  def applying
+    # @title = "Applying"
+    # @user = User.find(params[:id])
+    # @jobapps = @user.applied_jobapps.paginate(page: params[:page])
+    # render 'show_applying'
+  end
+  
   def new
     @user = User.new
   end
@@ -31,6 +38,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @jobapps = @user.applied_jobapps
   end
 
   # for user who logged in to see all users

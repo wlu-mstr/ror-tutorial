@@ -1,7 +1,19 @@
 Rails.application.routes.draw do
-  resources :jobapps
+  resources :jobapps do
+    member do
+      get :applied  # /jobapps/9/applied   applied_jobapp_path(9)
+    end
+  end
 
-  resources :users
+  resources :users do
+    member do
+      get :applying   # /users/1/applying   applying_user_path(1)
+    end
+  end
+
+  resources :relationships
+
+
   resources :sessions, only: [:new, :create, :destroy]
 
 
