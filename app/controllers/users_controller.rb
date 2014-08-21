@@ -15,13 +15,9 @@ class UsersController < ApplicationController
   end
   
   def new
-    @user = User.new
   end
 
   def edit
-    # not necessary anymore, because `before_action :correct_user` have
-    # get @user
-    # @user = User.find(params[:id])
   end
 
   def update
@@ -50,6 +46,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash.now[:success] = "Welcome to the Sample App!"
+      sign_in @user
       redirect_to jobapps_path
     else
       render 'new'

@@ -1,5 +1,5 @@
 class JobappsController < ApplicationController
-  load_and_authorize_resource except: [:create]
+  # load_and_authorize_resource except: [:create]
  
   # GET /jobapps
   # GET /jobapps.json
@@ -19,6 +19,7 @@ class JobappsController < ApplicationController
 
   # GET /jobapps/1/edit
   def edit
+    @jobapp = Jobapp.find(params[:id])
   end
 
   # POST /jobapps
